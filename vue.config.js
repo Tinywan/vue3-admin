@@ -10,15 +10,15 @@ module.exports = {
    * webpack配置,see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
    **/
   chainWebpack: (config) => {
-    const svgRule = config.module.rule("svg");     
-    svgRule.uses.clear();     
+    const svgRule = config.module.rule("svg");
+    svgRule.uses.clear();
     svgRule
-    .use("svg-sprite-loader")
-    .loader("svg-sprite-loader")
-    .options({ 
-      symbolId: "icon-[name]",
-      include: ["./src/icons"] 
-    });
+      .use("svg-sprite-loader")
+      .loader("svg-sprite-loader")
+      .options({
+        symbolId: "icon-[name]",
+        include: ["./src/icons"]
+      });
   },
   configureWebpack: (config) => {
     config.resolve = { // 配置解析别名
@@ -40,7 +40,7 @@ module.exports = {
     sourceMap: false,
     // css预设器配置项
     loaderOptions: {
-      scss: { 
+      scss: {
         prependData: `@import "./src/styles/main.scss";`
       }
     },
@@ -65,11 +65,11 @@ module.exports = {
     hotOnly: false,
     proxy: {
       '/devApi': {
-          target: "http://www.web-jshtml.cn/productapi/token", //API服务器的地址  http://www.web-jshtml.cn/api
-          changeOrigin: true,
-          pathRewrite: {
-              '^/devApi': ''
-          }
+        target: "http://www.web-jshtml.cn/productapi/token", //API服务器的地址  http://www.web-jshtml.cn/api
+        changeOrigin: true,
+        pathRewrite: {
+          '^/devApi': ''
+        }
       }
     },
     overlay: { // 全屏模式下是否显示脚本错误
